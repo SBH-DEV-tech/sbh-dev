@@ -467,5 +467,22 @@
         </div>
       </div>
     </footer>
+     <script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+  });
+
+  // Close the mobile menu when clicking a link
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+      menuToggle.classList.remove('active');
+    });
+  });
+</script>
   </body>
 </html>
