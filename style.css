@@ -1,45 +1,150 @@
 /* =========================================
    RESET
 ========================================= */
-/* Show toggle button only on mobile screens */
+/* =========================================
+   MOBILE NAVIGATION
+========================================= */
+
 .menu-toggle {
   display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
+  width: 42px;
+  height: 42px;
+  padding: 8px;
   background: transparent;
-  border: none;
+  border: 1px solid #111;
   cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 .menu-toggle span {
-  height: 3px;
-  width: 100%;
-  background-color: #000; /* Adjust color to match your design */
-  border-radius: 2px;
-  transition: all 0.3s ease;
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #111;
+  transition: 0.3s ease;
 }
 
-/* Mobile Media Query */
+/* =========================================
+   MOBILE
+========================================= */
+
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: flex; /* Reveal the hamburger menu icon */
+
+  .navbar {
+    position: relative;
   }
 
+  .nav-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Show hamburger */
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Mobile menu */
   .nav-links {
-    display: none; /* Hide standard links on mobile */
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%;
-    background-color: #ffffff; /* Match your header background */
+    right: 0;
+
+    display: flex;
     flex-direction: column;
-    padding: 1.5rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    align-items: stretch;
+
+    background: #fff;
+
+    padding: 20px;
+
+    border-top: 1px solid #111;
+    border-bottom: 1px solid #111;
+
+    gap: 0;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      visibility 0.25s ease;
+
+    z-index: 999;
   }
 
-  /* Revealed state when user taps hamburger menu */
+  /* Open menu */
+  .nav-links.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Navigation links */
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 15px 5px;
+
+    text-decoration: none;
+
+    border-bottom: 1px solid #ddd;
+  }
+
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+
+  /* Start a Project button */
+  .nav-links .nav-button {
+    margin-top: 12px;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Hamburger animation */
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 480px) {
+
+  .nav-container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .logo img {
+    max-width: 120px;
+    height: auto;
+  }
+
+  .nav-links {
+    padding: 15px 18px;
+  }
+
+}  /* Revealed state when user taps hamburger menu */
   .nav-links.active {
     display: flex;
   }
