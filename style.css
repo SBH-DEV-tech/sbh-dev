@@ -1,7 +1,49 @@
 /* =========================================
    RESET
 ========================================= */
+/* Show toggle button only on mobile screens */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
 
+.menu-toggle span {
+  height: 3px;
+  width: 100%;
+  background-color: #000; /* Adjust color to match your design */
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile Media Query */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex; /* Reveal the hamburger menu icon */
+  }
+
+  .nav-links {
+    display: none; /* Hide standard links on mobile */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff; /* Match your header background */
+    flex-direction: column;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Revealed state when user taps hamburger menu */
+  .nav-links.active {
+    display: flex;
+  }
+}
 * {
   margin: 0;
   padding: 0;
