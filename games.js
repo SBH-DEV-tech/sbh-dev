@@ -1,6 +1,4 @@
-/* SBH DEV Arcade: catalog interactions.
-   Connect only game URLs supplied/approved by your game provider.
-   Do not paste arbitrary third-party URLs into this configuration. */
+/* SBH DEV Arcade: catalog interactions and original local HTML5 games. */
 (() => {
   const menuToggle = document.getElementById('menuToggle');
   const navMenu = document.getElementById('navMenu');
@@ -49,8 +47,7 @@
   const closeButton = document.getElementById('modalClose');
   const defaultMessage = frameWrap?.innerHTML || '';
 
-  /* Add a provider-approved URL to a card's data-game-url attribute to enable an embed.
-     For safety, only HTTPS URLs are accepted. Confirm the provider permits iframe embedding. */
+  /* Local original games may use same-origin relative paths. Remote embeds must use HTTPS and be permitted by their owner. */
   document.querySelectorAll('.preview-game').forEach(button => button.addEventListener('click', () => {
     const card = button.closest('.game-card');
     const gameUrl = card?.dataset.gameUrl || '';
@@ -60,7 +57,7 @@
       if (gameUrl) {
         try {
           const url = new URL(gameUrl, window.location.href);
-          if (url.protocol === 'https:') {
+          if (url.protocol === 'https:' || url.origin === window.location.origin) {
             frameWrap.innerHTML = '';
             const iframe = document.createElement('iframe');
             iframe.src = url.href;

@@ -32,3 +32,8 @@ Upload the contents of this folder to the existing static hosting root, replacin
 - Replace integration slots with approved games and real descriptions.
 - Add unique game pages and search-engine metadata once actual game titles are known.
 - Do not expect revenue simply from publishing the website; traffic, retention, game licensing, and advertising/provider approval all matter.
+
+
+## Original playable games
+
+This version includes three original self-contained HTML5 games in `games/`: `brick-breaker.html`, `snake.html`, and `memory-match.html`. They use inline CSS/JavaScript and no external game provider. The catalog opens these same-origin files in the existing game modal. Test by serving the project through a local web server or deployment; some browser features behave differently when opened directly from disk.
